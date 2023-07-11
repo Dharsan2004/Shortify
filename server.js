@@ -47,6 +47,6 @@ app.get("/:shortUrl", async (req, res) => {
     res.redirect(short_id.full);
 });
 
-app.listen(3000, () => {
+app.listen(process.Env.PORT || 3000, () => {
     console.log("server is Running");
 });
