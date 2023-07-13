@@ -1,4 +1,31 @@
 
+# Scalable Shortify
+
+Scalable Shortify is a URL shortening service built using HTML, Bootstrap, JavaScript, Express, Node.js, Redis, and Git. It allows you to encode URLs using the MD5 hashing algorithm and provides caching using Redis to improve response times.
+
+## Features
+
+- URL encoding algorithm using MD5 hashing
+- Caching using Redis for improved response times
+- Scalable architecture
+
+## Installation and Local Setup
+
+To run Scalable Shortify locally, please follow the instructions below:
+
+### Prerequisites
+
+- Node.js (version >= 12.0.0)
+- Redis (version >= 5.0.0)
+
+### 1. Clone the repository
+
+Clone the Scalable Shortify repository to your local machine using the following command:
+
+
+
+
+
 ```bash
  git clone https://github.com/your-username/scalable-shortify.git
 ```
