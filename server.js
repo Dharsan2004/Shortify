@@ -4,11 +4,24 @@ const app = express();
 const shortUrl = require("./models/shortUrl");
 
 const mongoose = require("mongoose");
+const crypto = require("crypto");
 
-mongoose.connect("mongodb://localhost/urlShortify", {
+const mongoURL = "mongodb://localhost/urlShortify" || process.env.MONGO_URL;
+
+mongoose.connect(mongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
+
+function generateShortURL(longURL) {
+    const hash = crypto.createHash("sha512").update(longURL).digest("hex");
+    const shortURL = hash.substring(0, 7); // Extract a portion of the hash for the shortened URL
+    return shortURL;
+}
+
+// const longURL = "https://example.com/very/long/url";
+// const shortenedURL = generateShortURL(longURL);
+// console.log(shortenedURL);
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -20,11 +33,16 @@ app.get("/", async (req, res) => {
 
 app.post("/shortUrls", async (req, res) => {
     console.log(req.body.fullurl.length);
+    const longURL = req.body.fullurl;
+    const shortenedURL = generateShortURL(longURL);
+    console.log(shortenedURL);
+
     if (req.body.fullurl.length === 0) {
         return res.redirect("/");
     }
     await shortUrl.create({
         full: req.body.fullurl,
+        short: shortenedURL,
     });
     res.redirect("/");
 });
