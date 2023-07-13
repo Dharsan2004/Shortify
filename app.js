@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
 
-const shortUrl = require("./models/shortUrl");
+require("dotenv").config();
 
+const shortUrl = require("./models/shortUrl");
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 
-const mongoURL = "mongodb://localhost/urlShortify" || process.env.MONGO_URL;
+const mongoURL =
+    "mongodb+srv://dharsanS2004:dharsangoogle@cluster0.oveqvmp.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(mongoURL, {
     useNewUrlParser: true,
@@ -65,6 +67,6 @@ app.get("/:shortUrl", async (req, res) => {
     res.redirect(short_id.full);
 });
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(3000, () => {
     console.log("server is Running");
 });
