@@ -5,7 +5,7 @@ Scalable Shortify is a URL shortening service built using HTML, Bootstrap, JavaS
 
 ## Features
 
-- URL encoding algorithm using MD5 hashing
+- URL encoding algorithm using SHA512
 - Caching using Redis for improved response times
 - Scalable architecture
 
