@@ -12,8 +12,7 @@ const shortUrl = require("./models/shortUrl");
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 
-const mongoURL =
-    "mongodb+srv://dharsanS2004:dharsangoogle@cluster0.oveqvmp.mongodb.net/?retryWrites=true&w=majority";
+const mongoURL = "mongodb://127.0.0.1:27017/ScalableShortify";
 
 mongoose.connect(mongoURL, {
     useNewUrlParser: true,
